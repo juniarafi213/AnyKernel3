@@ -14,7 +14,7 @@ on:
       defconfig:
         description: 'Kernel Defconfig'
         required: true
-        default: 'vayu_defconfig'
+        default: 'vayu-bpf_defconfig'
       build_type:
         description: 'Clang Toolchain'
         required: true
