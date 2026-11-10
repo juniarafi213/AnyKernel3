@@ -167,7 +167,10 @@ jobs:
         if: failure()
         run: |
           if [ -f kernel/build.log ]; then
-            tail -n 350 kernel/build.log > error.log
+            echo "=== COMPILATION ERRORS ===" > error.log
+            grep -C 5 -i "error:" kernel/build.log | head -n 150 >> error.log || true
+            echo -e "\n=== RECENT BUILD OUTPUT (TAIL) ===" >> error.log
+            tail -n 250 kernel/build.log >> error.log
           else
             echo "No build.log found" > error.log
           fi
